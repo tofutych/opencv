@@ -21,8 +21,8 @@ def main():
         if not ret:
             break
 
-        # cur_frame = cv2.cvtColor(cur_frame, cv2.COLOR_BGR2GRAY)
-        cur_frame = cv2.GaussianBlur(cv2.cvtColor(cur_frame, cv2.COLOR_BGR2GRAY), (11, 11), 0)
+        cur_frame = cv2.GaussianBlur(cv2.cvtColor(
+            cur_frame, cv2.COLOR_BGR2GRAY), (11, 11), 0)
         dif = cv2.absdiff(cur_frame, pr_frame)
         (T, thresh) = cv2.threshold(dif, 20, 255, cv2.THRESH_BINARY)
         contours, hierarchy = cv2.findContours(
@@ -39,7 +39,7 @@ def main():
 
     video_writer.release()
     cap.release()
-    
+
     cv2.destroyAllWindows()
 
 
